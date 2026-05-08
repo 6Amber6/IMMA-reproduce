@@ -49,7 +49,18 @@ class Evaluator(object):
 
     def img_to_img_similarity(self, src_images, generated_images):
         if self.metric == "lpips":
-            return 1.0 - torch.mean(self.model(src_images, generated_images))
+            # 修复:允许不同数量的 src 和 gen,计算所有 pairs 的平均 LPIPS
+            n_src = src_images.shape[0]
+            n_gen = generated_images.shape[0]
+            total_lpips = 0.0
+            count = 0
+            for i in range(n_src):
+                for j in range(n_gen):
+                    src_i = src_images[i:i+1]
+                    gen_j = generated_images[j:j+1]
+                    total_lpips += self.model(src_i, gen_j).item()
+                    count += 1
+            return torch.tensor(1.0 - total_lpips / count)
         src_img_features = self.get_image_features(src_images)
         gen_img_features = self.get_image_features(generated_images)
 
@@ -115,10 +126,11 @@ if __name__=='__main__':
     for epoch_id in epoch_ids:
         files_imma = torch.cat(get_files(path_imma, epoch_id), dim=0)
         files_baseline = torch.cat(get_files(path_base, epoch_id), dim=0)
-        if metric == "lpips":
-            n_ref = len(list(files_reference))
-            n_imma = len(list(files_imma))
-            assert n_ref == n_imma
+        # LPIPS 数量不必相等(已通过 img_to_img_similarity 修复)
+        # if metric == "lpips":
+        #     n_ref = len(list(files_reference))
+        #     n_imma = len(list(files_imma))
+        #     assert n_ref == n_imma
         # Compute two scores: (ref, base), (ref, imma)
         baseline_values[epoch_id] = metric_model.img_to_img_similarity(files_reference, files_baseline).detach().cpu().numpy() # compute metric for base
         imma_values[epoch_id] = metric_model.img_to_img_similarity(files_reference, files_imma).detach().cpu().numpy() # compute metric for imma
