@@ -71,7 +71,7 @@ def image_loader(image_name, lpips=False):
     return image.to(torch.float)
 
 def get_files(path, epoch, is_lpips=False):
-    file_names = sorted([file for file in path.glob(r'{}_*.png'.format(epoch).zfill(11))])
+    file_names = sorted([file for file in path.glob(r'{}_*.png'.format(epoch))])
     return [image_loader(file, is_lpips) for file in file_names]
 
 def get_reference_files(path):
