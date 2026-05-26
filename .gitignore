@@ -1,8 +1,32 @@
+# ===== Large model checkpoints =====
+*.pt
+*.safetensors
+*.ckpt
+*.bin
 
-# Backup and one-time scripts
-*.backup
-fix_*.py
+# ===== Big training data (keep only metadata) =====
+data/vangogh/*.png
+data/vangogh_noisy/*.png
+data/vangogh_adv_backup_*/
+data/vangogh_adv_v1_broken/
+data/vangogh_adv_mixed_*/
 
-# Backup and one-time scripts
+# ===== Results: block ALL pngs, then re-allow ONLY epoch 49 =====
+results/**/*.png
+!results/**/49_*.png
+
+# ===== Logs / backups / cache =====
+logs/
+backups/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.bak
+*.tmp
 *.backup
-fix_*.py
+
+# ===== System =====
+.DS_Store
+*.swp
+*.swo
+*~
