@@ -781,6 +781,7 @@ def main():
                     torch_dtype=weight_dtype,
                 )
                 pipeline = pipeline.to(accelerator.device)
+                pipeline.safety_checker = None
                 pipeline.set_progress_bar_config(disable=True)
 
                 # run inference
