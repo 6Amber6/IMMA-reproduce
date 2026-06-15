@@ -46,7 +46,7 @@ def _epochs(gen_dir):
 
 def compute_lpips_csv(ref_dir, base_dir, imma_dir, out_csv, device, model):
     """Per-epoch sim = 1 - mean LPIPS over all (reference x generated) pairs. Same as eval.py, vectorized."""
-    refs = torch.stack([_load(f) for f in sorted(glob.glob(os.path.join(ref_dir, "*.png")))]).to(device)
+    refs = torch.stack([_load(f) for f in sorted(sum([glob.glob(os.path.join(ref_dir, e)) for e in ("*.png","*.jpg","*.jpeg")], []))]).to(device)
     R = refs.shape[0]
 
     def per_epoch(gen_dir):

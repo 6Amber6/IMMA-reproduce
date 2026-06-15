@@ -1,34 +1,16 @@
-# ===== Large model checkpoints =====
+# 大模型权重（外部托管，别进 git）
 *.pt
+*.bin
 *.safetensors
 *.ckpt
-*.bin
-
-# ===== Big training data (keep only metadata) =====
-data/vangogh/*.png
-data/vangogh_noisy/*.png
-data/vangogh_adv_backup_*/
-data/vangogh_adv_v1_broken/
-data/vangogh_adv_mixed_*/
-
-# ===== Results: block ALL pngs, then re-allow ONLY epoch 49 =====
-results/**/*.png
-!results/**/49_*.png
-
-# ===== Logs / backups / cache =====
+# 实验输出（可重新生成：逐 epoch 图 + 中间 checkpoint）
+runs/
+runs_repro/
+runs_natural/
+# 日志与缓存
 logs/
-backups/
+*.log
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-*.bak
-*.tmp
-*.backup
-
-# ===== System =====
 .DS_Store
-*.swp
-*.swo
-*~
-runs/
-runs_repro/
