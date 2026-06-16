@@ -1,0 +1,4 @@
+metric,mean_SGR,peak_SGR,peak_epoch,final_SGR,final_epoch
+LPIPS,5.88,23.46,1,0.54,49
+CLIP,5.86,19.16,7,1.09,49
+DINO,22.33,56.02,3,5.70,49

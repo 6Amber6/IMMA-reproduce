@@ -1,16 +1,17 @@
-# 大模型权重（外部托管，别进 git）
 *.pt
 *.bin
 *.safetensors
 *.ckpt
-# 实验输出（可重新生成：逐 epoch 图 + 中间 checkpoint）
 runs/
 runs_repro/
 runs_natural/
-# 日志与缓存
+runs_reanchor/
+data/
 logs/
 *.log
+run_log.txt
+bilevel_log.txt
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
-.DS_Store
+!results/
+!results/**
