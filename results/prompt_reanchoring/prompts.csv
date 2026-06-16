@@ -1,11 +1,7 @@
 artist,variant,prompt
 vangogh,paper_setting,"An artwork by Van Gogh"
-vangogh,paraphrase,"An artwork in the style of Van Gogh"
 vangogh,styledesc,"a post-impressionist oil painting, swirling brushstrokes, thick impasto, vivid blue and yellow"
 tyleredlin,paper_setting,"An artwork by Tyler Edlin"
-tyleredlin,paraphrase,"An artwork in the style of Tyler Edlin"
 tyleredlin,styledesc,"an epic fantasy environment concept art, dramatic painterly landscape, cinematic lighting"
 kilianeng,paper_setting,"An artwork by Kilian Eng"
-kilianeng,paraphrase,"An artwork in the style of Kilian Eng"
-kilianeng,styledesc_v1,"a retro-futuristic sci-fi illustration, vivid orange and purple, intricate linework"
-kilianeng,styledesc_v2,"a psychedelic retro-futuristic sci-fi illustration, bold flat color planes in orange teal and purple, intricate fine linework, surreal alien dreamscape, vintage 1970s science-fiction comic art"
+kilianeng,styledesc,"a psychedelic retro-futuristic sci-fi illustration, bold flat color planes in orange teal and purple, intricate fine linework, surreal alien dreamscape, vintage 1970s science-fiction comic art"
